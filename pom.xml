@@ -22,6 +22,8 @@
         <module>inventory-service</module>
         <module>order-service</module>
         <module>product-service</module>
+        <module>discovery-service</module>
+
     </modules>
 
     <dependencyManagement>
@@ -30,6 +32,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2023.0.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
