@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -23,7 +22,7 @@ public class OrderService {
     private final WebClient.Builder  webClientBuilder;
 
 
-    public void placeOrder(OrderRequest orderRequest){
+    public String placeOrder(OrderRequest orderRequest){
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
 
@@ -50,6 +49,7 @@ public class OrderService {
 
         if(allProductsInStock){
             orderRepository.save(order);
+            return "Order placed successfully";
         }else{
             throw new IllegalArgumentException("Producct is not in stock, Please try again later");
         }
