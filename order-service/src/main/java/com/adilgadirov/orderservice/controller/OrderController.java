@@ -8,7 +8,6 @@ import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.concurrent.CompletableFuture;
 
 @RestController
@@ -29,6 +28,7 @@ public class OrderController {
     }
 
     public CompletableFuture<String> fallbackMethod(OrderRequest orderRequest, RuntimeException exception){
+
         return CompletableFuture.supplyAsync(()-> "Oops Something went wrong, Please try  again later");
     }
 }

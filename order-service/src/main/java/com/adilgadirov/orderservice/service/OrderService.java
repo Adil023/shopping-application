@@ -51,7 +51,7 @@ public class OrderService {
             orderRepository.save(order);
             return "Order placed successfully";
         }else{
-            throw new IllegalArgumentException("Producct is not in stock, Please try again later");
+            throw new IllegalArgumentException("Product is not in stock, Please try again later");
         }
     }
 

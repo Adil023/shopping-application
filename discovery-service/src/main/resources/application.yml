@@ -1,9 +1,18 @@
-eureka:
+server:
+  port: 8761
 
+eureka:
   instance:
-    hostname: local
+    hostname: localhost
   client:
     register-with-eureka: false
     fetch-registry: false
-server:
-  port: 8761
+    service-url:
+      defaultZone: http://eureka:password@localhost:8761/eureka
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
