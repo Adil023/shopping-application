@@ -1,4 +1,3 @@
-# Serverin hansı portda işləyəcəyini təyin edir
 server:
   port: 8761
 

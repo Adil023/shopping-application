@@ -25,7 +25,6 @@
         <module>discovery-service</module>
         <module>api-gateway</module>
         <module>notification-server</module>
-
     </modules>
 
     <dependencyManagement>
