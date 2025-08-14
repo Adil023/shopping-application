@@ -1,18 +1,27 @@
-spring:
+ spring:
   application:
     name: order-service
-
   datasource:
     url: jdbc:mysql://localhost:3306/order_service
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 12345
-
   jpa:
     hibernate:
       ddl-auto: update
     open-in-view: true
     show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: "notificationTopic"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+ server:
+  port: 8081
 
 eureka:
   client:
@@ -32,6 +41,12 @@ management:
   endpoint:
     health:
       show-details: always
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
 
 resilience4j:
   circuitbreaker:
@@ -45,24 +60,12 @@ resilience4j:
         waitDurationInOpenState: 5s
         permittedNumberOfCallsInHalfOpenState: 3
         automaticTransitionFromOpenToHalfOpenEnabled: true
-
   timelimiter:
     instances:
       inventory:
         timeoutDuration: 3s
-
   retry:
     instances:
       inventory:
         max-attempts: 3
         wait-duration: 5s
-
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411/api/v2/spans
-  tracing:
-    sampling:
-      probability: 1.0
-
-server:
-  port: 8081
