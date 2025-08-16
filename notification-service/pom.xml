@@ -7,7 +7,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>notification-server</artifactId>
+    <artifactId>notification-service</artifactId>
     <packaging>jar</packaging>
 
     <name>notification-server</name>
