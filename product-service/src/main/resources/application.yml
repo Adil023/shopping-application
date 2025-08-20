@@ -17,6 +17,10 @@ management:
   tracing:
     sampling:
       probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 server:
   port: 0
